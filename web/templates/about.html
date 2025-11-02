@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>关于游戏</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <style>
+      .about-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+      
+      .about-header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      
+      .about-title {
+        font-size: 32px;
+        color: #38bdf8;
+        margin-bottom: 10px;
+      }
+      
+      .about-subtitle {
+        color: #94a3b8;
+        font-size: 16px;
+      }
+      
+      .about-section {
+        background: #1e293b;
+        border-radius: 12px;
+        padding: 24px;
+        margin-bottom: 24px;
+        border: 1px solid #334155;
+      }
+      
+      .section-title {
+        font-size: 20px;
+        color: #e2e8f0;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      
+      .game-info {
+        color: #e2e8f0;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+      
+      .feature-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 16px;
+        margin-bottom: 20px;
+      }
+      
+      .feature-item {
+        background: #0f172a;
+        padding: 16px;
+        border-radius: 8px;
+        border: 1px solid #334155;
+      }
+      
+      .feature-title {
+        color: #38bdf8;
+        font-weight: bold;
+        margin-bottom: 8px;
+      }
+      
+      .feature-desc {
+        color: #94a3b8;
+        font-size: 14px;
+        line-height: 1.4;
+      }
+      
+      .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+      
+      .tech-item {
+        background: #334155;
+        color: #e2e8f0;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 500;
+      }
+      
+      .credits {
+        background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid #475569;
+      }
+      
+      .credit-item {
+        color: #e2e8f0;
+        margin-bottom: 12px;
+        padding-left: 20px;
+        position: relative;
+      }
+      
+      .credit-item::before {
+        content: "•";
+        color: #38bdf8;
+        position: absolute;
+        left: 0;
+      }
+      
+      .back-btn {
+        display: inline-block;
+        padding: 12px 24px;
+        background: #38bdf8;
+        color: #0f172a;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        margin-top: 20px;
+      }
+      
+      .back-btn:hover {
+        background: #0ea5e9;
+        transform: translateY(-2px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="about-container">
+      <div class="about-header">
+        <h1 class="about-title">关于游戏</h1>
+        <p class="about-subtitle">坦克大战 - 经典重制版</p>
+      </div>
+      
+      <!-- 游戏介绍 -->
+      <div class="about-section">
+        <h2 class="section-title">🎮 游戏介绍</h2>
+        <div class="game-info">
+          <p>《坦克大战》是一款经典的俯视视角 2D 坦克对战游戏。玩家操控坦克在由砖块、钢板、草地等元素组成的关卡中与多波敌人战斗，保护基地，通过击败敌人获得分数。</p>
+          
+          <p>本游戏采用现代 Web 技术重制，支持多种敌人类型、完整的碰撞系统、实时 HUD 显示，为玩家带来流畅的游戏体验。</p>
+        </div>
+      </div>
+      
+      <!-- 游戏特色 -->
+      <div class="about-section">
+        <h2 class="section-title">✨ 游戏特色</h2>
+        <div class="feature-list">
+          <div class="feature-item">
+            <div class="feature-title">多种敌人类型</div>
+            <div class="feature-desc">4种不同特性的敌人：普通、快速、重装、特殊坦克，每种都有独特的移动速度和射击模式</div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-title">完整碰撞系统</div>
+            <div class="feature-desc">精确的子弹与瓦片碰撞检测，支持砖块破坏、钢板阻挡等物理交互</div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-title">波次敌人系统</div>
+            <div class="feature-desc">敌人按波次出现，每波包含不同类型的敌人，增加游戏挑战性</div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-title">实时 HUD 显示</div>
+            <div class="feature-desc">显示生命值、分数、关卡进度、敌人数量等关键游戏信息</div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-title">响应式设计</div>
+            <div class="feature-desc">支持不同分辨率和设备，提供最佳的游戏体验</div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-title">可定制设置</div>
+            <div class="feature-desc">支持音量调节、按键映射、分辨率设置等个性化选项</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 技术栈 -->
+      <div class="about-section">
+        <h2 class="section-title">🛠️ 技术栈</h2>
+        <div class="tech-stack">
+          <span class="tech-item">Python</span>
+          <span class="tech-item">Flask</span>
+          <span class="tech-item">JavaScript</span>
+          <span class="tech-item">HTML5 Canvas</span>
+          <span class="tech-item">CSS3</span>
+          <span class="tech-item">Web API</span>
+          <span class="tech-item">LocalStorage</span>
+        </div>
+        <div class="game-info">
+          <p>后端采用 Python Flask 框架提供 RESTful API，前端使用原生 JavaScript 和 HTML5 Canvas 实现游戏渲染，利用现代 Web 技术确保跨平台兼容性。</p>
+        </div>
+      </div>
+      
+      <!-- 开发信息 -->
+      <div class="about-section">
+        <h2 class="section-title">👨‍💻 开发信息</h2>
+        <div class="credits">
+          <div class="credit-item">基于经典坦克大战游戏重制</div>
+          <div class="credit-item">采用现代 Web 技术栈开发</div>
+          <div class="credit-item">支持响应式设计和跨平台兼容</div>
+          <div class="credit-item">开源项目，遵循 MIT 许可证</div>
+          <div class="credit-item">持续更新，欢迎反馈和建议</div>
+        </div>
+      </div>
+      
+      <div style="text-align: center;">
+        <a href="{{ url_for('main_menu') }}" class="back-btn">返回主菜单</a>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>坦克大战 · 前端启动控制台</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  </head>
+  <body>
+    <main class="container">
+      <section class="hero">
+        <div class="hero__heading">
+          <span class="hero__eyebrow">FLASK 前端已就绪</span>
+          <h1 class="hero__title">坦克大战 · 次世代前哨</h1>
+          <p class="hero__subtitle">
+            后端 Flask 与前端 Canvas 引擎全部待命。选择你的行动，立即进入复古与霓虹碰撞的战场体验。
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn--primary btn--pill" href="{{ url_for('main_menu') }}">🎮 进入主菜单</a>
+            <a class="btn btn--ghost btn--pill" href="{{ url_for('game') }}">⚡ 快速试玩</a>
+            <a class="btn btn--ghost btn--pill btn--minimal" href="{{ url_for('levels') }}">📜 关卡浏览</a>
+          </div>
+        </div>
+
+        <div class="glass-card">
+          <div class="glow-outline"></div>
+          <span class="tag tag--accent">系统状态</span>
+          <h2 class="glass-card__title">环境诊断面板</h2>
+          <p>项目服务运行正常，可通过以下端点快速联调与验证。</p>
+          <div class="metrics metrics--two-column">
+            <div class="metric-card">
+              <span class="metric-card__label">健康检查</span>
+              <span class="metric-card__value"><code>/health</code></span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-card__label">关卡接口</span>
+              <span class="metric-card__value">GET /api/levels</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-card__label">项目栈</span>
+              <span class="metric-card__value">Flask · Canvas</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-card__label">启动命令</span>
+              <span class="metric-card__value"><code>python -m web.app</code></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="menu-grid">
+        <a class="menu-card" href="{{ url_for('main_menu') }}">
+          <div class="menu-card__icon">🛡️</div>
+          <div class="menu-card__title">主菜单大厅</div>
+          <p class="menu-card__desc">浏览模式、玩法说明与设置面板，进入作战前的最佳准备区。</p>
+        </a>
+        <a class="menu-card" href="{{ url_for('game') }}">
+          <div class="menu-card__icon">🕹️</div>
+          <div class="menu-card__title">直接开战</div>
+          <p class="menu-card__desc">跳过引导，立即体验像素战场与现代 HUD 升级的坦克激战。</p>
+        </a>
+        <a class="menu-card" href="{{ url_for('levels') }}">
+          <div class="menu-card__icon">🗺️</div>
+          <div class="menu-card__title">关卡情报</div>
+          <p class="menu-card__desc">查看地图生成策略、敌人波次与未来关卡规划，提前制定战术。</p>
+        </a>
+        <a class="menu-card" target="_blank" href="/api/levels">
+          <div class="menu-card__icon">🔗</div>
+          <div class="menu-card__title">API 数据</div>
+          <p class="menu-card__desc">打开 JSON 数据接口，集成到前端或调试脚本，联调无忧。</p>
+        </a>
+      </section>
+
+      <footer class="menu-footer">
+        <span class="status-pill">服务运行中</span>
+        <div class="menu-footer__stats">
+          <span class="tag">按键：WASD · J</span>
+          <span class="tag">暂停：Esc</span>
+        </div>
+        <a class="footer-link" href="{{ url_for('help') }}">查看操控 &amp; FAQ →</a>
+      </footer>
+    </main>
+  </body>
+</html>
+

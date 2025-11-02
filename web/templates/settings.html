@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>游戏设置</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <style>
+      .settings-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+      
+      .settings-header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      
+      .settings-title {
+        font-size: 32px;
+        color: #38bdf8;
+        margin-bottom: 10px;
+      }
+      
+      .settings-subtitle {
+        color: #94a3b8;
+        font-size: 16px;
+      }
+      
+      .settings-section {
+        background: #1e293b;
+        border-radius: 12px;
+        padding: 24px;
+        margin-bottom: 24px;
+        border: 1px solid #334155;
+      }
+      
+      .section-title {
+        font-size: 20px;
+        color: #e2e8f0;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      
+      .setting-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 0;
+        border-bottom: 1px solid #334155;
+      }
+      
+      .setting-item:last-child {
+        border-bottom: none;
+      }
+      
+      .setting-label {
+        color: #e2e8f0;
+        font-size: 16px;
+      }
+      
+      .setting-control {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      
+      .slider {
+        width: 120px;
+        height: 6px;
+        background: #334155;
+        border-radius: 3px;
+        outline: none;
+        -webkit-appearance: none;
+      }
+      
+      .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 20px;
+        height: 20px;
+        background: #38bdf8;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      
+      .slider::-moz-range-thumb {
+        width: 20px;
+        height: 20px;
+        background: #38bdf8;
+        border-radius: 50%;
+        cursor: pointer;
+        border: none;
+      }
+      
+      .checkbox {
+        width: 20px;
+        height: 20px;
+        accent-color: #38bdf8;
+      }
+      
+      .select {
+        background: #334155;
+        color: #e2e8f0;
+        border: 1px solid #475569;
+        border-radius: 6px;
+        padding: 8px 12px;
+        font-size: 14px;
+      }
+      
+      .key-input {
+        background: #334155;
+        color: #e2e8f0;
+        border: 1px solid #475569;
+        border-radius: 6px;
+        padding: 8px 12px;
+        font-size: 14px;
+        width: 60px;
+        text-align: center;
+      }
+      
+      .value-display {
+        color: #38bdf8;
+        font-weight: 600;
+        min-width: 40px;
+        text-align: right;
+      }
+      
+      .button-group {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        margin-top: 40px;
+      }
+      
+      .btn {
+        padding: 12px 24px;
+        border: 2px solid #475569;
+        border-radius: 8px;
+        color: #e2e8f0;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        background: #334155;
+      }
+      
+      .btn:hover {
+        background: #475569;
+        border-color: #38bdf8;
+      }
+      
+      .btn.primary {
+        background: #38bdf8;
+        color: #0f172a;
+        border-color: #38bdf8;
+      }
+      
+      .btn.primary:hover {
+        background: #0ea5e9;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="settings-container">
+      <div class="settings-header">
+        <h1 class="settings-title">游戏设置</h1>
+        <p class="settings-subtitle">自定义你的游戏体验</p>
+      </div>
+      
+      <!-- 音频设置 -->
+      <div class="settings-section">
+        <h2 class="section-title">🔊 音频设置</h2>
+        
+        <div class="setting-item">
+          <span class="setting-label">主音量</span>
+          <div class="setting-control">
+            <input type="range" class="slider" id="masterVolume" min="0" max="100" value="80">
+            <span class="value-display" id="masterVolumeValue">80%</span>
+          </div>
+        </div>
+        
+        <div class="setting-item">
+          <span class="setting-label">音效音量</span>
+          <div class="setting-control">
+            <input type="range" class="slider" id="sfxVolume" min="0" max="100" value="90">
+            <span class="value-display" id="sfxVolumeValue">90%</span>
+          </div>
+        </div>
+        
+        <div class="setting-item">
+          <span class="setting-label">背景音乐</span>
+          <div class="setting-control">
+            <input type="range" class="slider" id="musicVolume" min="0" max="100" value="70">
+            <span class="value-display" id="musicVolumeValue">70%</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 控制设置 -->
+      <div class="settings-section">
+        <h2 class="section-title">🎮 控制设置</h2>
+        
+        <div class="setting-item">
+          <span class="setting-label">移动键</span>
+          <div class="setting-control">
+            <input type="text" class="key-input" id="moveUp" value="W" readonly>
+            <input type="text" class="key-input" id="moveDown" value="S" readonly>
+            <input type="text" class="key-input" id="moveLeft" value="A" readonly>
+            <input type="text" class="key-input" id="moveRight" value="D" readonly>
+          </div>
+        </div>
+        
+        <div class="setting-item">
+          <span class="setting-label">射击键</span>
+          <div class="setting-control">
+            <input type="text" class="key-input" id="shootKey" value="J" readonly>
+            <span style="color: #64748b; font-size: 12px;">或空格键</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 显示设置 -->
+      <div class="settings-section">
+        <h2 class="section-title">🖥️ 显示设置</h2>
+        
+        <div class="setting-item">
+          <span class="setting-label">全屏模式</span>
+          <div class="setting-control">
+            <input type="checkbox" class="checkbox" id="fullscreen">
+          </div>
+        </div>
+        
+        <div class="setting-item">
+          <span class="setting-label">分辨率</span>
+          <div class="setting-control">
+            <select class="select" id="resolution">
+              <option value="640x360">640x360 (推荐)</option>
+              <option value="800x450">800x450</option>
+              <option value="960x540">960x540</option>
+              <option value="1280x720">1280x720</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="setting-item">
+          <span class="setting-label">帧率限制</span>
+          <div class="setting-control">
+            <input type="range" class="slider" id="fpsLimit" min="30" max="120" value="60">
+            <span class="value-display" id="fpsLimitValue">60 FPS</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 游戏设置 -->
+      <div class="settings-section">
+        <h2 class="section-title">⚙️ 游戏设置</h2>
+        
+        <div class="setting-item">
+          <span class="setting-label">难度</span>
+          <div class="setting-control">
+            <select class="select" id="difficulty">
+              <option value="easy">简单</option>
+              <option value="normal" selected>普通</option>
+              <option value="hard">困难</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="setting-item">
+          <span class="setting-label">友伤</span>
+          <div class="setting-control">
+            <input type="checkbox" class="checkbox" id="friendlyFire">
+          </div>
+        </div>
+        
+        <div class="setting-item">
+          <span class="setting-label">自动保存</span>
+          <div class="setting-control">
+            <input type="checkbox" class="checkbox" id="autoSave" checked>
+          </div>
+        </div>
+      </div>
+      
+      <div class="button-group">
+        <button class="btn" onclick="resetSettings()">重置默认</button>
+        <button class="btn" onclick="saveSettings()">保存设置</button>
+        <a href="{{ url_for('main_menu') }}" class="btn primary">返回主菜单</a>
+      </div>
+    </div>
+
+    <script>
+      // 音量滑块更新
+      document.getElementById('masterVolume').addEventListener('input', function() {
+        document.getElementById('masterVolumeValue').textContent = this.value + '%';
+      });
+      
+      document.getElementById('sfxVolume').addEventListener('input', function() {
+        document.getElementById('sfxVolumeValue').textContent = this.value + '%';
+      });
+      
+      document.getElementById('musicVolume').addEventListener('input', function() {
+        document.getElementById('musicVolumeValue').textContent = this.value + '%';
+      });
+      
+      // FPS 滑块更新
+      document.getElementById('fpsLimit').addEventListener('input', function() {
+        document.getElementById('fpsLimitValue').textContent = this.value + ' FPS';
+      });
+      
+      // 保存设置
+      function saveSettings() {
+        const settings = {
+          masterVolume: document.getElementById('masterVolume').value,
+          sfxVolume: document.getElementById('sfxVolume').value,
+          musicVolume: document.getElementById('musicVolume').value,
+          fullscreen: document.getElementById('fullscreen').checked,
+          resolution: document.getElementById('resolution').value,
+          fpsLimit: document.getElementById('fpsLimit').value,
+          difficulty: document.getElementById('difficulty').value,
+          friendlyFire: document.getElementById('friendlyFire').checked,
+          autoSave: document.getElementById('autoSave').checked
+        };
+        
+        localStorage.setItem('tankBattleSettings', JSON.stringify(settings));
+        alert('设置已保存！');
+      }
+      
+      // 重置设置
+      function resetSettings() {
+        if (confirm('确定要重置所有设置为默认值吗？')) {
+          document.getElementById('masterVolume').value = 80;
+          document.getElementById('sfxVolume').value = 90;
+          document.getElementById('musicVolume').value = 70;
+          document.getElementById('fullscreen').checked = false;
+          document.getElementById('resolution').value = '640x360';
+          document.getElementById('fpsLimit').value = 60;
+          document.getElementById('difficulty').value = 'normal';
+          document.getElementById('friendlyFire').checked = false;
+          document.getElementById('autoSave').checked = true;
+          
+          // 更新显示
+          document.getElementById('masterVolumeValue').textContent = '80%';
+          document.getElementById('sfxVolumeValue').textContent = '90%';
+          document.getElementById('musicVolumeValue').textContent = '70%';
+          document.getElementById('fpsLimitValue').textContent = '60 FPS';
+        }
+      }
+      
+      // 加载保存的设置
+      function loadSettings() {
+        const saved = localStorage.getItem('tankBattleSettings');
+        if (saved) {
+          const settings = JSON.parse(saved);
+          document.getElementById('masterVolume').value = settings.masterVolume || 80;
+          document.getElementById('sfxVolume').value = settings.sfxVolume || 90;
+          document.getElementById('musicVolume').value = settings.musicVolume || 70;
+          document.getElementById('fullscreen').checked = settings.fullscreen || false;
+          document.getElementById('resolution').value = settings.resolution || '640x360';
+          document.getElementById('fpsLimit').value = settings.fpsLimit || 60;
+          document.getElementById('difficulty').value = settings.difficulty || 'normal';
+          document.getElementById('friendlyFire').checked = settings.friendlyFire || false;
+          document.getElementById('autoSave').checked = settings.autoSave !== false;
+          
+          // 更新显示
+          document.getElementById('masterVolumeValue').textContent = (settings.masterVolume || 80) + '%';
+          document.getElementById('sfxVolumeValue').textContent = (settings.sfxVolume || 90) + '%';
+          document.getElementById('musicVolumeValue').textContent = (settings.musicVolume || 70) + '%';
+          document.getElementById('fpsLimitValue').textContent = (settings.fpsLimit || 60) + ' FPS';
+        }
+      }
+      
+      // 页面加载时恢复设置
+      loadSettings();
+    </script>
+  </body>
+</html>

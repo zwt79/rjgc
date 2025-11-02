@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>坦克大战 · 主菜单大厅</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  </head>
+  <body>
+    <main class="container">
+      <section class="hero">
+        <div class="hero__heading">
+          <span class="hero__eyebrow">指挥室 · MAIN MENU</span>
+          <h1 class="hero__title">坦克大战 · 霓虹战区</h1>
+          <p class="hero__subtitle">
+            在这里设置战术、了解敌情并挑选作战模式。准备就绪后，点击出击按钮迈入复古像素与未来 HUD 融合的激战世界。
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn--primary btn--pill" href="{{ url_for('game') }}">🚀 开始游戏</a>
+            <a class="btn btn--ghost btn--pill" href="{{ url_for('levels') }}">🗺️ 关卡选择</a>
+            <a class="btn btn--ghost btn--pill" href="{{ url_for('settings') }}">⚙️ 游戏设置</a>
+          </div>
+        </div>
+
+        <div class="glass-card">
+          <div class="glow-outline"></div>
+          <span class="tag tag--accent">作战简报</span>
+          <h2 class="glass-card__title">进入战场前请确认</h2>
+          <div class="metrics metrics--two-column">
+            <div class="metric-card">
+              <span class="metric-card__label">移动方式</span>
+              <span class="metric-card__value">WASD / ↑↓←→</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-card__label">攻击指令</span>
+              <span class="metric-card__value">J / 空格</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-card__label">暂停战斗</span>
+              <span class="metric-card__value">Esc</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-card__label">快速重启</span>
+              <span class="metric-card__value">R</span>
+            </div>
+          </div>
+          <p class="tips">提示：升级道具与基地护盾将在后续版本开放，保持关注联机公告。</p>
+        </div>
+      </section>
+
+      <section class="menu-grid">
+        <a class="menu-card" href="{{ url_for('game') }}">
+          <div class="menu-card__icon">🔥</div>
+          <div class="menu-card__title">立即出击</div>
+          <p class="menu-card__desc">跳转至战斗前线，体验现代 HUD、粒子爆炸与动态波次机制。</p>
+        </a>
+        <a class="menu-card" href="{{ url_for('levels') }}">
+          <div class="menu-card__icon">📍</div>
+          <div class="menu-card__title">关卡情报库</div>
+          <p class="menu-card__desc">浏览地图瓦片组合、敌军类型和替换策略，为每一局预先布署。</p>
+        </a>
+        <a class="menu-card" href="{{ url_for('settings') }}">
+          <div class="menu-card__icon">🎛️</div>
+          <div class="menu-card__title">调校中心</div>
+          <p class="menu-card__desc">自定义音量、操作手感与即将上线的视觉滤镜，打造专属战斗体验。</p>
+        </a>
+        <a class="menu-card" href="{{ url_for('help') }}">
+          <div class="menu-card__icon">📘</div>
+          <div class="menu-card__title">作战手册</div>
+          <p class="menu-card__desc">查看策略分享、常见问题与开发笔记，和团队保持同步。</p>
+        </a>
+        <a class="menu-card" href="{{ url_for('about') }}">
+          <div class="menu-card__icon">✨</div>
+          <div class="menu-card__title">项目档案</div>
+          <p class="menu-card__desc">认识开发团队、项目规划与鸣谢名单，向经典致敬。</p>
+        </a>
+      </section>
+
+      <footer class="menu-footer">
+        <div class="menu-footer__stats">
+          <span class="tag">单人模式</span>
+          <span class="tag">音效筹备中</span>
+          <span class="tag">存档系统开发中</span>
+        </div>
+        <a class="footer-link" href="{{ url_for('index') }}">返回启动控制台 →</a>
+      </footer>
+    </main>
+  </body>
+</html>

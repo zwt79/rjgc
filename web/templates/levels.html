@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>关卡列表</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <style>
+      table{width:100%;border-collapse:collapse}
+      th,td{border:1px solid #334155;padding:8px;text-align:left}
+      th{background:#0b1220;color:#93c5fd}
+      tr:nth-child(even){background:#0b1420}
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <h1>关卡列表</h1>
+      <p class="muted">数据来自 <code>/api/levels</code></p>
+      <table id="tbl">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>名称</th>
+            <th>难度</th>
+            <th>波次</th>
+            <th>敌人数</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <p style="margin-top:12px"><a class="btn" href="{{ url_for('index') }}">返回首页</a></p>
+    </main>
+    <script>
+      async function load(){
+        const res = await fetch('/api/levels');
+        const levels = await res.json();
+        const tbody = document.querySelector('#tbl tbody');
+        tbody.innerHTML = '';
+        for(const lv of levels){
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${lv.id}</td>
+            <td>${lv.name}</td>
+            <td>${lv.difficulty.toUpperCase()}</td>
+            <td>${lv.waves}</td>
+            <td>${lv.enemies}</td>
+            <td><a class="btn" href="/game?level=${lv.id}" title="进入该关卡">开始</a></td>
+          `;
+          tbody.appendChild(tr);
+        }
+      }
+      load();
+    </script>
+  </body>
+  </html>
+
